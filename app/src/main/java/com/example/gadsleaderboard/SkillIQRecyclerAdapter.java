@@ -11,13 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class LearnerRecyclerAdapter extends RecyclerView.Adapter<LearnerRecyclerAdapter.ViewHolder> {
+public class SkillIQRecyclerAdapter extends RecyclerView.Adapter<SkillIQRecyclerAdapter.ViewHolder> {
 
     private final Context mContext;
     private List<LearnersInfo> mLearners;
     private final LayoutInflater mLayoutInflater;
 
-    public LearnerRecyclerAdapter(Context context, List<LearnersInfo> learners) {
+    public SkillIQRecyclerAdapter(Context context, List<LearnersInfo> learners) {
         this.mContext = context;
         mLearners = learners;
         mLayoutInflater = LayoutInflater.from(context);
@@ -26,7 +26,7 @@ public class LearnerRecyclerAdapter extends RecyclerView.Adapter<LearnerRecycler
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = mLayoutInflater.inflate(R.layout.item_learner_list, parent, false);
+        View itemView = mLayoutInflater.inflate(R.layout.item_skill_learner_list, parent, false);
         return new ViewHolder((itemView));
     }
 
@@ -34,7 +34,7 @@ public class LearnerRecyclerAdapter extends RecyclerView.Adapter<LearnerRecycler
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         LearnersInfo learner = mLearners.get(position);
         holder.mTextLearner.setText(learner.getmName());
-        holder.mTextHoursWatched.setText(learner.getmHoursWatched()+ " learning hours, " + learner.getmCountry());
+        holder.mTextHoursWatched.setText(learner.getmIQScore()+ " Skill IQ Score, " + learner.getmCountry());
     }
 
     @Override
@@ -49,8 +49,8 @@ public class LearnerRecyclerAdapter extends RecyclerView.Adapter<LearnerRecycler
 
         public ViewHolder(View itemView){
             super(itemView);
-            mTextLearner = (TextView) itemView.findViewById(R.id.text_name_view);
-            mTextHoursWatched = (TextView) itemView.findViewById(R.id.text_hours_view);
+            mTextLearner = (TextView) itemView.findViewById(R.id.text_name_iq_view);
+            mTextHoursWatched = (TextView) itemView.findViewById(R.id.text_score_iq_view);
 
         }
     }
