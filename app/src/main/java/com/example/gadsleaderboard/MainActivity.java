@@ -4,11 +4,13 @@ import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.tabs.TabLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.View;
 import android.view.Menu;
@@ -27,18 +29,14 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        initializeDisplayContent();
-    }
+        ViewPager viewPager = findViewById(R.id.main_viewpager);
 
-    private void initializeDisplayContent() {
+        LearnersViewPagerAdapter pagerAdapter = new LearnersViewPagerAdapter(this, getSupportFragmentManager());
+        viewPager.setAdapter(pagerAdapter);
 
-        RecyclerView recyclerLearners = (RecyclerView) findViewById(R.id.list_learners);
-        LinearLayoutManager learnersLayoutManager = new LinearLayoutManager(this);
-        recyclerLearners.setLayoutManager(learnersLayoutManager);
+        TabLayout tabLayout = findViewById(R.id.view_tabs);
+        tabLayout.setupWithViewPager(viewPager);
 
-        ArrayList<LearnersInfo> learners = DataManager.getInstance().getLearners();
-        final LearnerRecyclerAdapter learnerRecyclerAdapter = new LearnerRecyclerAdapter(this, learners);
-        recyclerLearners.setAdapter(learnerRecyclerAdapter);
 
     }
 
