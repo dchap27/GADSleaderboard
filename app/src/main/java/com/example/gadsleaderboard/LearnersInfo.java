@@ -2,43 +2,58 @@ package com.example.gadsleaderboard;
 
 public final class LearnersInfo {
 
-    private final String mName;
-    private int mHoursWatched;
-    private int mIQScore;
-    private final String mCountry;
+    private String name;
+    private int hours;
+    private int score;
+    private String country;
+    private String badgeUrl;
 
 
-    public LearnersInfo(String mName, String mCountry) {
-        this.mName = mName;
-        this.mCountry = mCountry;
+    public LearnersInfo() {
     }
 
-    public String getmName() {
-        return mName;
+    public String getName() {
+        return name;
     }
 
-    public String getmCountry() {
-        return mCountry;
+    public String getCountry() {
+        return country;
     }
 
-    public int getmHoursWatched() {
-        return mHoursWatched;
+    public int getHours() {
+        return hours;
     }
 
-    public int getmIQScore() {
-        return mIQScore;
+    public int getScore() {
+        return score;
     }
 
-    public void setmHoursWatched(int hours){
-        this.mHoursWatched = hours;
+    public String getBadgeUrl(){
+        return badgeUrl;
     }
 
-    public void setmIQScore(int mIQScore) {
-        this.mIQScore = mIQScore;
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setBadgeUrl(String badgeUrl){
+        this.badgeUrl = badgeUrl;
+    }
+
+    public void setCountry(String country){
+        this.country = country;
+    }
+
+    public void setHours(int hours){
+        this.hours = hours;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
     private String getCompareKey() {
-        return getmName() + "|" + getmCountry() + "|" + getmHoursWatched();
+        return getName() + "|" + getCountry() + "|" + getHours();
     }
 
     @Override

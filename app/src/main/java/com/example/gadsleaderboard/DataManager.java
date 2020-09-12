@@ -20,16 +20,16 @@ public class DataManager {
         final DataManager dm = getInstance();
 
         LearnersInfo learner = dm.getLearner("Adeola Modupe");
-        learner.setmHoursWatched(15);
-        learner.setmIQScore(198);
+        learner.setHours(15);
+        learner.setScore(198);
 
         learner = dm.getLearner("Bonsue Goldi");
-        learner.setmHoursWatched(67);
-        learner.setmIQScore(250);
+        learner.setHours(67);
+        learner.setScore(250);
 
         learner = dm.getLearner("Mahmud Onyezi");
-        learner.setmHoursWatched(45);
-        learner.setmIQScore(120);
+        learner.setHours(45);
+        learner.setScore(120);
     }
 
     private DataManager() {
@@ -42,7 +42,7 @@ public class DataManager {
 
     public LearnersInfo getLearner(String name) {
         for (LearnersInfo learner : mLearners) {
-            if (name.equals(learner.getmName()))
+            if (name.equals(learner.getName()))
                 return learner;
         }
         return null;
@@ -56,17 +56,17 @@ public class DataManager {
     }
 
     private LearnersInfo initializeLearner1(){
-        return new LearnersInfo("Adeola Modupe", "Nigeria");
+        return new LearnersInfo();
     }
     private LearnersInfo initializeLearner2(){
-        return new LearnersInfo("Mahmud Onyezi", "Kenya");
+        return new LearnersInfo();
     }
 
     private LearnersInfo initializeLearner3(){
-        return new LearnersInfo("John Authur", "Nigeria");
+        return new LearnersInfo();
     }
 
     private LearnersInfo initializeLearner4(){
-        return new LearnersInfo("Bonsue Goldi", "Uganda");
+        return new LearnersInfo();
     }
 }

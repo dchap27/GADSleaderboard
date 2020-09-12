@@ -10,8 +10,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.example.gadsleaderboard.services.LeaderBoardService;
+import com.example.gadsleaderboard.services.ServiceBuilder;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,6 +29,8 @@ public class TopLearnerFragment extends Fragment {
 
 
     private View mRootView;
+    private LearnerRecyclerAdapter mLearnerRecyclerAdapter;
+    private RecyclerView mRecyclerLearners;
 
     public TopLearnerFragment() {
         // Required empty public constructor
@@ -37,14 +48,32 @@ public class TopLearnerFragment extends Fragment {
 
     private void initializeDisplayContent() {
 
-        RecyclerView recyclerLearners = (RecyclerView) mRootView.findViewById(R.id.list_learners);
+        mRecyclerLearners = (RecyclerView) mRootView.findViewById(R.id.list_learners);
         LinearLayoutManager learnersLayoutManager = new LinearLayoutManager(mRootView.getContext());
-        recyclerLearners.setLayoutManager(learnersLayoutManager);
+        mRecyclerLearners.setLayoutManager(learnersLayoutManager);
 
-        ArrayList<LearnersInfo> learners = DataManager.getInstance().getLearners();
-        final LearnerRecyclerAdapter learnerRecyclerAdapter = new LearnerRecyclerAdapter(mRootView.getContext(), learners);
-        recyclerLearners.setAdapter(learnerRecyclerAdapter);
+        // make the api calls
+        makeApiCall();
 
+    }
+
+    private void makeApiCall() {
+        LeaderBoardService leaderBoardService = ServiceBuilder.buildService(LeaderBoardService.class);
+        Call<List<LearnersInfo>> leaderBoardRequest = leaderBoardService.getTopLearners();
+
+        leaderBoardRequest.enqueue(new Callback<List<LearnersInfo>>() {
+            @Override
+            public void onResponse(Call<List<LearnersInfo>> call, Response<List<LearnersInfo>> response) {
+                mLearnerRecyclerAdapter = new LearnerRecyclerAdapter(mRootView.getContext(), response.body());
+                mRecyclerLearners.setAdapter(mLearnerRecyclerAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<LearnersInfo>> call, Throwable t) {
+                Toast.makeText(mRootView.getContext(),
+                        "Failed to retrieve leaderboards", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 }

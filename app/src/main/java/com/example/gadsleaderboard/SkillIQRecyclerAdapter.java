@@ -33,8 +33,8 @@ public class SkillIQRecyclerAdapter extends RecyclerView.Adapter<SkillIQRecycler
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         LearnersInfo learner = mLearners.get(position);
-        holder.mTextLearner.setText(learner.getmName());
-        holder.mTextHoursWatched.setText(learner.getmIQScore()+ " Skill IQ Score, " + learner.getmCountry());
+        holder.mTextLearner.setText(learner.getName());
+        holder.mTextHoursWatched.setText(learner.getScore()+ " Skill IQ Score, " + learner.getCountry());
     }
 
     @Override

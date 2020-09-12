@@ -33,8 +33,8 @@ public class LearnerRecyclerAdapter extends RecyclerView.Adapter<LearnerRecycler
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         LearnersInfo learner = mLearners.get(position);
-        holder.mTextLearner.setText(learner.getmName());
-        holder.mTextHoursWatched.setText(learner.getmHoursWatched()+ " learning hours, " + learner.getmCountry());
+        holder.mTextLearner.setText(learner.getName());
+        holder.mTextHoursWatched.setText(learner.getHours()+ " learning hours, " + learner.getCountry());
     }
 
     @Override
