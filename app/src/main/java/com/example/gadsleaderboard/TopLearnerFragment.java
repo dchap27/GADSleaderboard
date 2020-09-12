@@ -16,6 +16,8 @@ import com.example.gadsleaderboard.services.LeaderBoardService;
 import com.example.gadsleaderboard.services.ServiceBuilder;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import retrofit2.Call;
@@ -64,6 +66,8 @@ public class TopLearnerFragment extends Fragment {
         leaderBoardRequest.enqueue(new Callback<List<LearnersInfo>>() {
             @Override
             public void onResponse(Call<List<LearnersInfo>> call, Response<List<LearnersInfo>> response) {
+                response.body().sort(Comparator.comparing(LearnersInfo::getHours, Comparator.reverseOrder()));
+
                 mLearnerRecyclerAdapter = new LearnerRecyclerAdapter(mRootView.getContext(), response.body());
                 mRecyclerLearners.setAdapter(mLearnerRecyclerAdapter);
             }

@@ -16,6 +16,7 @@ import com.example.gadsleaderboard.services.LeaderBoardService;
 import com.example.gadsleaderboard.services.ServiceBuilder;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import retrofit2.Call;
@@ -57,11 +58,12 @@ public class SkillIQFragment extends Fragment {
 
     private void makeApiCall() {
         LeaderBoardService leaderBoardService = ServiceBuilder.buildService(LeaderBoardService.class);
-        Call<List<LearnersInfo>> leaderBoardRequest = leaderBoardService.getTopLearners();
+        Call<List<LearnersInfo>> leaderBoardRequest = leaderBoardService.getTopSkills();
 
         leaderBoardRequest.enqueue(new Callback<List<LearnersInfo>>() {
             @Override
             public void onResponse(Call<List<LearnersInfo>> call, Response<List<LearnersInfo>> response) {
+                response.body().sort(Comparator.comparing(LearnersInfo::getScore, Comparator.reverseOrder()));
                 mSkillRecyclerAdapter = new SkillIQRecyclerAdapter(mRootView.getContext(), response.body());
                 mRecyclerLearners.setAdapter(mSkillRecyclerAdapter);
             }
