@@ -3,4 +3,8 @@
     <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#222222</color>
     <color name="colorAccent">#DAD1D4</color>
+    <color name="home_submitColor">#F1F1F1</color>
+    <color name="success_color">#1EB126</color>
+    <color name="failure_color">#F31616</color>
+    <color name="submission_color">#666666</color>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.gadsleaderboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -36,6 +38,16 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout tabLayout = findViewById(R.id.view_tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+        Button button = (Button) findViewById(R.id.button_submit);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SubmissionActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
 
     }

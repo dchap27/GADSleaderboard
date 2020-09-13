@@ -24,11 +24,16 @@
 
             <Button
                 android:id="@+id/button_submit"
-                android:layout_width="0dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
                 android:text="@string/submit_button"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/round_button"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
