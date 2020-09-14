@@ -15,7 +15,6 @@ import android.widget.Toast;
 import com.example.gadsleaderboard.services.LeaderBoardService;
 import com.example.gadsleaderboard.services.ServiceBuilder;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -49,7 +48,7 @@ public class SkillIQFragment extends Fragment {
     }
 
     private void initializeDisplayContent() {
-        mRecyclerLearners = (RecyclerView) mRootView.findViewById(R.id.list_skill_iq_learners);
+        mRecyclerLearners = mRootView.findViewById(R.id.list_skill_iq_learners);
         LinearLayoutManager learnersLayoutManager = new LinearLayoutManager(mRootView.getContext());
         mRecyclerLearners.setLayoutManager(learnersLayoutManager);
 
@@ -63,7 +62,11 @@ public class SkillIQFragment extends Fragment {
         leaderBoardRequest.enqueue(new Callback<List<LearnersInfo>>() {
             @Override
             public void onResponse(Call<List<LearnersInfo>> call, Response<List<LearnersInfo>> response) {
-                response.body().sort(Comparator.comparing(LearnersInfo::getScore, Comparator.reverseOrder()));
+                try {
+                    response.body().sort(Comparator.comparing(LearnersInfo::getScore, Comparator.reverseOrder()));
+                } catch (NullPointerException e){
+                    // do nothing
+                }
                 mSkillRecyclerAdapter = new SkillIQRecyclerAdapter(mRootView.getContext(), response.body());
                 mRecyclerLearners.setAdapter(mSkillRecyclerAdapter);
             }

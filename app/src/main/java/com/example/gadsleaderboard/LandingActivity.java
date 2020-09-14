@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.widget.ImageView;
 
 public class LandingActivity extends AppCompatActivity {
@@ -17,7 +16,7 @@ public class LandingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
 
-        ImageView image = (ImageView) findViewById(R.id.landing_image);
+        ImageView image = findViewById(R.id.landing_image);
         image.setImageDrawable(this.getDrawable(R.drawable.gads_background));
 
         getStarted();

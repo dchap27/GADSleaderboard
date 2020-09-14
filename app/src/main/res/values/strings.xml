@@ -12,4 +12,9 @@
     <string name="placeholder_email">Email Addresss</string>
     <string name="placeholder_project_link">Project on GITHUB (link)</string>
     <string name="project_submission_title">Project Submission</string>
+    <string name="submission_title">Project Submission</string>
+    <string name="question">Are you Sure?</string>
+    <string name="response_success_message">Submission Successful</string>
+    <string name="response_failure_message">Submission not Successuful</string>
+    <string name="custom_error_message">Failed to retrieve leaderboards</string>
 </resources>

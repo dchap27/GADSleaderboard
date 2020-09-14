@@ -15,8 +15,6 @@ import android.widget.Toast;
 import com.example.gadsleaderboard.services.LeaderBoardService;
 import com.example.gadsleaderboard.services.ServiceBuilder;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -50,7 +48,7 @@ public class TopLearnerFragment extends Fragment {
 
     private void initializeDisplayContent() {
 
-        mRecyclerLearners = (RecyclerView) mRootView.findViewById(R.id.list_learners);
+        mRecyclerLearners = mRootView.findViewById(R.id.list_learners);
         LinearLayoutManager learnersLayoutManager = new LinearLayoutManager(mRootView.getContext());
         mRecyclerLearners.setLayoutManager(learnersLayoutManager);
 
@@ -75,7 +73,7 @@ public class TopLearnerFragment extends Fragment {
             @Override
             public void onFailure(Call<List<LearnersInfo>> call, Throwable t) {
                 Toast.makeText(mRootView.getContext(),
-                        "Failed to retrieve leaderboards", Toast.LENGTH_LONG).show();
+                        getResources().getString(R.string.custom_error_message), Toast.LENGTH_LONG).show();
             }
         });
     }

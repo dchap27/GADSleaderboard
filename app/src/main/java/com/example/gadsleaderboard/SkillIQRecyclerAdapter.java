@@ -34,7 +34,7 @@ public class SkillIQRecyclerAdapter extends RecyclerView.Adapter<SkillIQRecycler
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         LearnersInfo learner = mLearners.get(position);
         holder.mTextLearner.setText(learner.getName());
-        holder.mTextHoursWatched.setText(learner.getScore()+ " Skill IQ Score, " + learner.getCountry());
+        holder.mTextHoursWatched.setText(String.format("%d Skill IQ Score, %s", learner.getScore(), learner.getCountry()));
     }
 
     @Override
@@ -44,13 +44,13 @@ public class SkillIQRecyclerAdapter extends RecyclerView.Adapter<SkillIQRecycler
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public final TextView mTextLearner;
-        public final TextView mTextHoursWatched;
+        private final TextView mTextLearner;
+        private final TextView mTextHoursWatched;
 
         public ViewHolder(View itemView){
             super(itemView);
-            mTextLearner = (TextView) itemView.findViewById(R.id.text_name_iq_view);
-            mTextHoursWatched = (TextView) itemView.findViewById(R.id.text_score_iq_view);
+            mTextLearner = itemView.findViewById(R.id.text_name_iq_view);
+            mTextHoursWatched = itemView.findViewById(R.id.text_score_iq_view);
 
         }
     }
