@@ -18,7 +18,7 @@ public class LandingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_landing);
 
         ImageView image = (ImageView) findViewById(R.id.landing_image);
-        image.setImageDrawable(this.getDrawable(R.drawable.gads_image));
+        image.setImageDrawable(this.getDrawable(R.drawable.gads_background));
 
         getStarted();
     }
@@ -32,6 +32,6 @@ public class LandingActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        },10000);
+        },3000);
     }
 }

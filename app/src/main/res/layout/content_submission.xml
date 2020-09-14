@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ConstraintLayout_submission_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/text_submit_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="@string/project_submission_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#F2F4821E"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="#F2F4821E"
+        android:foreground="#F2F4821E"
+        android:foregroundTint="#F2F4821E"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_submit_title" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout_submit_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        android:paddingBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:baselineAligned="false"
+            android:paddingTop="16dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/textinput_round_corner_background"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                app:hintEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_view_firstname"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="@string/placeholder_first_name" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/textinput_round_corner_background"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                app:hintEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_view_lastname"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="@string/placeholder_last_name" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/textinput_round_corner_background">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/text_view_email"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="@string/placeholder_email"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/TextInputStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/textinput_round_corner_background"
+            app:hintEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/text_view_projectlink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/placeholder_project_link" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_project_submit"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/rounded_corners"
+        android:text="@string/submit_button"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout_submit_form" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

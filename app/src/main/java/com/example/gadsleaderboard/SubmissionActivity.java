@@ -1,6 +1,8 @@
 package com.example.gadsleaderboard;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.AlertDialog;
@@ -47,6 +49,17 @@ public class SubmissionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submission);
 
+        //Get the toolbar from the layout and set the actionbar with it.
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(getTitle());
+
+        //Here you get actionbar features if you
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.gads_title);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         TextView title = (TextView) findViewById(R.id.text_submit_title);
         title.setText("Project Submission");
 
@@ -63,7 +76,7 @@ public class SubmissionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                formContainer.setBackgroundColor(getResources().getColor(R.color.submission_color));
+                formContainer.setAlpha((float) 0.6); // make the background faint
                 formView.setVisibility(View.GONE);
                 submitButton.setVisibility(View.GONE);
 
@@ -93,10 +106,10 @@ public class SubmissionActivity extends AppCompatActivity {
     }
 
     private void submit(){
-        String fName = mFirstName.getText().toString();
-        String lname = mLastName.getText().toString();
-        String emailAddress = mEmail.getText().toString();
-        String projectLink = mLink.getText().toString();
+        String fName = mFirstName.getText().toString().trim();
+        String lname = mLastName.getText().toString().trim();
+        String emailAddress = mEmail.getText().toString().trim();
+        String projectLink = mLink.getText().toString().trim();
         String SUBMISSION_URL = "https://docs.google.com/forms/d/e/1FAIpQLSf9d1TcNU6zc6KR8bSEM41Z1g1zl35cwZr2xyjIhaMAz8WChQ/formResponse";
 
         if (validateInputDetails()) {
@@ -130,6 +143,7 @@ public class SubmissionActivity extends AppCompatActivity {
     }
 
     private boolean validateInputDetails() {
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
         if(mFirstName.getText().toString().trim().isEmpty()){
             Toast.makeText(SubmissionActivity.this, "First name entry is required.", Toast.LENGTH_SHORT).show();
             mFirstName.requestFocus();
@@ -142,6 +156,11 @@ public class SubmissionActivity extends AppCompatActivity {
         }
         if(mEmail.getText().toString().trim().isEmpty()){
             Toast.makeText(SubmissionActivity.this, "Email entry is required.", Toast.LENGTH_SHORT).show();
+            mEmail.requestFocus();
+            return false;
+        }
+        if(!(mEmail.getText().toString().trim().matches(emailPattern))){
+            Toast.makeText(SubmissionActivity.this, "Enter a valid email address.", Toast.LENGTH_SHORT).show();
             mEmail.requestFocus();
             return false;
         }
